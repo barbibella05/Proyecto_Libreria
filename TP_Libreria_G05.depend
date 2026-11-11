@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1793815019 source:c:\users\barbi\desktop\progra 2\tp_libreria_g05\clientemanager.cpp
+	<iostream>
+
+1793815019 source:c:\users\barbi\desktop\progra 2\tp_libreria_g05\empleado.cpp
+	<iostream>
+
+1793815019 source:c:\users\barbi\desktop\progra 2\tp_libreria_g05\empleadoarchivo.cpp
+	<iostream>
+
+1793815019 source:c:\users\barbi\desktop\progra 2\tp_libreria_g05\empleadomanager.cpp
+	<iostream>
+
+1584205420 source:c:\users\barbi\desktop\progra 2\tp_libreria_g05\main.cpp
+	<iostream>
+
+1793832816 source:c:\users\barbi\desktop\progra 2\tp_libreria_g05\cliente.cpp
+	<iostream>
+	"Cliente.h"
+
+1793832095 c:\users\barbi\desktop\progra 2\tp_libreria_g05\cliente.h
+	"Persona.h"
+	"Fecha.h"
+
+1793834666 c:\users\barbi\desktop\progra 2\tp_libreria_g05\persona.h
+	<string>
+
+1793920508 c:\users\barbi\desktop\progra 2\tp_libreria_g05\fecha.h
+	<string>
+
+1793834666 source:c:\users\barbi\desktop\progra 2\tp_libreria_g05\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1793834666 source:c:\users\barbi\desktop\progra 2\tp_libreria_g05\persona.cpp
+	<iostream>
+	"Persona.h"
+
