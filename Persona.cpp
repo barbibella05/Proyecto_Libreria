@@ -27,7 +27,7 @@ string Persona::getTelefono() {
     return _telefono;
 }
 
-bool Persona::getEstadoPersona() {
+bool Persona::getEstado() {
     return _estado;
 }
 
@@ -51,6 +51,6 @@ void Persona::setTelefono(string telefono) {
     _telefono = telefono;
 }
 
-void Persona::setEstadoPersona(bool estado) {
+void Persona::setEstado(bool estado) {
     _estado = estado;
 }

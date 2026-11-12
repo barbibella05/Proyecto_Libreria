@@ -1,7 +1,6 @@
 #include <iostream>
-using namespace std;
-
 #include "Fecha.h"
+using namespace std;
 
 Fecha::Fecha(){
     _dia = 0;

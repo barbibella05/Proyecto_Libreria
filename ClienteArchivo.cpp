@@ -81,9 +81,21 @@ bool ClienteArchivo::leer(int cantidadRegistros, Cliente *vec){
     return true;
 }
 
+bool ClienteArchivo::guardar(Cliente cliente, int pos){///AGREGA UN REGISGRO AL FINAL DEL ARCHIVO
+    FILE *p;
+
+    p = fopen(_nombre.c_str(), "ab");
+    if (p == NULL){
+        return false;
+    }
+    bool ok = fwrite(&pos, sizeof(Cliente), 1, p);
+    fclose(p);
+    return ok;
+}
+
 bool ClienteArchivo::eliminar(int pos){
     Cliente aux = leer(pos);
-    aux.setEstadoPersona(false);
+    aux.setEstado(false);
     bool ok = agregarCliente(aux, pos);
     return ok;
 }

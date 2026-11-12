@@ -9,6 +9,7 @@ public:
     bool agregarCliente(Cliente reg); // Añade al final
     bool agregarCliente(Cliente reg, int pos); // Sobreescribe uno existente
     int buscar(int nroCliente);
+    bool guardar(Cliente cliente, int pos);
     void modificarCliente(int nroCliente);
     void listarCliente();
     Cliente leer(int pos);
@@ -16,11 +17,3 @@ public:
     bool eliminar(int pos);
     int contarRegistros();
 };
-
-/**
-bool ClienteArchivo::AgregarCliente(Cliente reg)
-void ListarClientes():
-void BuscarCliente(int nroCliente);
-void ModificarCliente(int nroCliente);
-void DarDeBajaCliente(int nroCliente);
-*/

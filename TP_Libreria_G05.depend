@@ -36,3 +36,72 @@
 	<iostream>
 	"Persona.h"
 
+1794441052 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\cliente.cpp
+	<iostream>
+	"Cliente.h"
+
+1794441052 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\cliente.h
+	"Persona.h"
+	"Fecha.h"
+
+1794440513 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\persona.h
+	<string>
+
+1793920508 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\fecha.h
+	<string>
+
+1794441612 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientearchivo.cpp
+	<iostream>
+	<string>
+	<cstdio>
+	"ClienteArchivo.h"
+
+1794441612 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientearchivo.h
+	"Cliente.h"
+
+1794441535 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientemanager.cpp
+	<iostream>
+	<iomanip>
+	"ClienteManager.h"
+
+1794440299 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleado.cpp
+	<iostream>
+
+1794441558 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadoarchivo.cpp
+	<iostream>
+	"EmpleadoArchivo.h"
+
+1584205420 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\main.cpp
+	<iostream>
+
+1794421854 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadomanager.cpp
+	<iostream>
+
+1794440513 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\persona.cpp
+	<iostream>
+	"Persona.h"
+
+1794421902 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\fecha.cpp
+	<iostream>
+	"Fecha.h"
+
+1794440207 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\personamanager.cpp
+	<iostream>
+	<string>
+	"PersonaManager.h"
+
+1794440207 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\personamanager.h
+	"Persona.h"
+
+1794440452 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadoarchivo.h
+	"Empleado.h"
+
+1793832095 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleado.h
+	"Persona.h"
+	"Fecha.h"
+
+1794440648 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientemanager.h
+	"Cliente.h"
+	"ClienteArchivo.h"
+	"PersonaManager.h"
+

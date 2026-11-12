@@ -8,6 +8,7 @@ private:
     Fecha _fechaRegistro;
 public:
     Cliente();
+    Cliente(int nroCliente, Fecha fechaRegistro);
 
     int getNroCliente();
     Fecha getFechaRegistro();

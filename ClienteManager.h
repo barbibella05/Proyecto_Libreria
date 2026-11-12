@@ -1,15 +1,26 @@
 #pragma once
+#include "Cliente.h"
+#include "ClienteArchivo.h"
+#include "PersonaManager.h"
 
-class ClienteManager{
+class ClienteManager {
+
 private:
+    ClienteArchivo _archivo;
+    PersonaManager _personaManager;
+
+    Cliente CargarCliente(int nroCliente);
+    bool ExisteNro(int nroCliente);
+    Fecha PedirFecha();
+
+    void MostrarEncabezado();
+    void MostrarCliente(Cliente cliente);
 
 public:
     void Menu();
-    void Cargar(nroAuto: int);
-    void Mostrar();
-    void Agregar();
-    void BuscarPorDNI();
-    void modificarCliente();
+    void NuevoCliente();
+    void ModificarCliente();
     void ListarTodos();
+    void ListarXnroCliente();
     void Eliminar();
 };

@@ -7,6 +7,11 @@ Cliente::Cliente(){
     _fechaRegistro = Fecha();
 }
 
+Cliente::Cliente(int nroCliente, Fecha fechaRegistro) {
+    _nroCliente = nroCliente;
+    _fechaRegistro = fechaRegistro;
+}
+
 int Cliente::getNroCliente(){
     return _nroCliente;
 }

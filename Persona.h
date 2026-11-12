@@ -18,12 +18,12 @@ public:
     int getDni();
     std::string getEmail();
     std::string getTelefono();
-    bool getEstadoPersona();
+    bool getEstado();
 
     void setNombre(std::string nombre);
     void setApellido(std::string apellido);
     void setDni(int dni);
     void setEmail(std::string email);
     void setTelefono(std::string telefono);
-    void setEstadoPersona(bool estado);
+    void setEstado(bool estado);
 };
