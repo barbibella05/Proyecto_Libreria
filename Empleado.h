@@ -15,16 +15,16 @@ public:
     Empleado();
 
     int getNroEmpleado();
-    std::string getDireccion();
-    std::string getCuil();
+    const char* getDireccion();
+    const char* getCuil();
     Fecha getFechaIngreso();
     Fecha getFechaEgreso();
     int getPerfil();
 
-    void setNroEmpleado(int);
-    void setDireccion(std::string);
-    void setCuil(std::string);
-    Fecha setFechaIngreso(Fecha fechaIngreso);
-    Fecha setFechaEgreso(Fecha fechaEgreso);
-    void setPerfil(int);
+    void setNroEmpleado(int nroEmpleado);
+    void setDireccion(const char* direccion);
+    void setCuil(const char* cuil);
+    void setFechaIngreso(Fecha fechaIngreso);
+    void setFechaEgreso(Fecha fechaEgreso);
+    void setPerfil(int perfil);
 };

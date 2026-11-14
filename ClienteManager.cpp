@@ -4,6 +4,54 @@
 //#include "colors.hpp"
 using namespace std;
 
+void ClienteManager::Menu(){
+    int opcion;
+
+    do{
+        system("cls");
+        cout << "============================" << endl;
+        cout << "      MENU DE CLIENTES      " << endl;
+        cout << "============================" << endl;
+        cout << "1. Nuevo cliente" << endl;
+        cout << "2. Modificar cliente" << endl;
+        cout << "3. Listar clientes" << endl;
+        cout << "4. Eliminar cliente" << endl;
+        cout << "0. Volver" << endl;
+        cout << "============================" << endl;
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+        system("cls");
+
+        switch(opcion){
+        case 1:NuevoCliente();
+            system("pause");
+            break;
+
+        case 2:ModificarCliente();
+            system("pause");
+            break;
+
+        case 3:ListarTodos();
+            system("pause");
+            break;
+
+        case 4:Eliminar();
+            system("pause");
+            break;
+
+        case 0:
+            cout << "Volviendo al menu principal..." << endl;
+            break;
+
+        default:
+            cout << "Opcion incorrecta." << endl;
+            system("pause");
+            break;
+        }
+
+    } while(opcion != 0);
+}
+
 void ClienteManager::NuevoCliente(){
    int nroCliente;
 
@@ -23,26 +71,6 @@ void ClienteManager::NuevoCliente(){
    else{
       cout << "No se pudo guardar el cliente." << endl;
    }
-}
-
-Cliente ClienteManager::CargarCliente(int nroCliente) {
-    Persona persona = _personaManager.CrearPersona();
-    Fecha fechaRegistro = PedirFecha();
-
-    Cliente cliente(nroCliente, fechaRegistro);
-
-    cliente.setNombre(persona.getNombre());
-    cliente.setApellido(persona.getApellido());
-    cliente.setDni(persona.getDni());
-    cliente.setEmail(persona.getEmail());
-    cliente.setTelefono(persona.getTelefono());
-
-    return cliente;
-}
-
-bool ClienteManager::ExisteNro(int nroCliente) {
-
-    return _archivo.buscar(nroCliente) >= 0;
 }
 
 void ClienteManager::ModificarCliente(){
@@ -66,7 +94,7 @@ void ClienteManager::ModificarCliente(){
     cout << endl << "Nuevo apellido";
     cin >> apellidoNuevo;
 
-    reg.setApellido(apellidoNuevo);
+    reg.setApellido(apellidoNuevo.c_str());
 
     bool ok = _archivo.guardar(reg, pos);
 
@@ -79,48 +107,6 @@ void ClienteManager::ModificarCliente(){
 
     return;
 }
-
-void ClienteManager::Eliminar(){
-    int nroCliente;
-    cout << "Numero de cliente del registro a eliminar: ";
-    cin >> nroCliente;
-
-    int pos = _archivo.buscar(nroCliente);
-
-    if (pos < 0){
-        cout << "El registro no existe" << endl;
-        return;
-    }
-    Cliente reg = _archivo.leer(pos);
-    reg.setEstado(false);
-
-    bool ok = _archivo.eliminar(pos);
-
-    if (ok){
-        cout << "Registro eliminado correctamente" << endl;
-    }
-    else{
-        cout << "No se pudo eliminar el registro" << endl;
-    }
-
-    return;
-}
-
-Fecha ClienteManager::PedirFecha(){
-   int dia, mes, anio;
-
-   cout << "Fecha de registro" << endl;
-   cout << "  Dia: ";
-   cin >> dia;
-   cout << "  Mes: ";
-   cin >> mes;
-   cout << "  Anio: ";
-   cin >> anio;
-
-   return Fecha(dia, mes, anio);
-}
-
-/// --- Listados ---
 
 void ClienteManager::ListarTodos(){
    int cantidadRegistros = _archivo.contarRegistros();
@@ -179,6 +165,68 @@ void ClienteManager::ListarXnroCliente(){
     }
 
 }
+
+void ClienteManager::Eliminar(){
+    int nroCliente;
+    cout << "Numero de cliente del registro a eliminar: ";
+    cin >> nroCliente;
+
+    int pos = _archivo.buscar(nroCliente);
+
+    if (pos < 0){
+        cout << "El registro no existe" << endl;
+        return;
+    }
+    Cliente reg = _archivo.leer(pos);
+    reg.setEstado(false);
+
+    bool ok = _archivo.eliminar(pos);
+
+    if (ok){
+        cout << "Registro eliminado correctamente" << endl;
+    }
+    else{
+        cout << "No se pudo eliminar el registro" << endl;
+    }
+
+    return;
+}
+
+Cliente ClienteManager::CargarCliente(int nroCliente) {
+    Persona persona = _personaManager.CrearPersona();
+    Fecha fechaRegistro = PedirFecha();
+
+    Cliente cliente(nroCliente, fechaRegistro);
+
+    cliente.setNombre(persona.getNombre());
+    cliente.setApellido(persona.getApellido());
+    cliente.setDni(persona.getDni());
+    cliente.setEmail(persona.getEmail());
+    cliente.setTelefono(persona.getTelefono());
+    cliente.setEstado(true);
+
+    return cliente;
+}
+
+bool ClienteManager::ExisteNro(int nroCliente) {
+
+    return _archivo.buscar(nroCliente) >= 0;
+}
+
+Fecha ClienteManager::PedirFecha(){
+   int dia, mes, anio;
+
+   cout << "Fecha de registro" << endl;
+   cout << "  Dia: ";
+   cin >> dia;
+   cout << "  Mes: ";
+   cin >> mes;
+   cout << "  Anio: ";
+   cin >> anio;
+
+   return Fecha(dia, mes, anio);
+}
+
 
 void ClienteManager::MostrarEncabezado(){
    cout << endl;

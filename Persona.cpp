@@ -1,56 +1,61 @@
 #include <iostream>
+#include <cstring>
 #include "Persona.h"
 using namespace std;
 
-Persona::Persona() {
+Persona::Persona(){
+    strcpy(_nombre, "");
+    strcpy(_apellido, "");
     _dni = 0;
+    strcpy(_email, "");
+    strcpy(_telefono, "");
     _estado = true;
 }
 
-string Persona::getNombre() {
+const char* Persona::getNombre(){
     return _nombre;
 }
 
-string Persona::getApellido() {
+const char* Persona::getApellido(){
     return _apellido;
 }
 
-int Persona::getDni() {
+int Persona::getDni(){
     return _dni;
 }
 
-string Persona::getEmail() {
+const char* Persona::getEmail(){
     return _email;
 }
 
-string Persona::getTelefono() {
+const char* Persona::getTelefono(){
     return _telefono;
 }
 
-bool Persona::getEstado() {
+bool Persona::getEstado(){
     return _estado;
 }
 
-void Persona::setNombre(string nombre) {
-    _nombre = nombre;
+void Persona::setNombre(const char* nombre){
+    strcpy(_nombre, nombre);
 }
 
-void Persona::setApellido(string apellido) {
-    _apellido = apellido;
+void Persona::setApellido(const char* apellido){
+    strcpy(_apellido, apellido);
 }
 
-void Persona::setDni(int dni) {
+void Persona::setDni(int dni){
     _dni = dni;
 }
 
-void Persona::setEmail(string email) {
-    _email = email;
+void Persona::setEmail(const char* email){
+    strcpy(_email, email);
 }
 
-void Persona::setTelefono(string telefono) {
-    _telefono = telefono;
+void Persona::setTelefono(const char* telefono){
+    strcpy(_telefono, telefono);
 }
 
-void Persona::setEstado(bool estado) {
+void Persona::setEstado(bool estado){
     _estado = estado;
 }

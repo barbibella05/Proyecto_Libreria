@@ -48,6 +48,8 @@
 		<Unit filename="Fecha.h" />
 		<Unit filename="Persona.cpp" />
 		<Unit filename="Persona.h" />
+		<Unit filename="PersonaManager.cpp" />
+		<Unit filename="PersonaManager.h" />
 		<Unit filename="TP_Libreria_G05.cbp" />
 		<Unit filename="main.cpp" />
 		<Extensions>

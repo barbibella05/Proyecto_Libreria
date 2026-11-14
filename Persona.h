@@ -2,28 +2,28 @@
 #include <string>
 
 class Persona {
-private:
-    std::string _nombre;
-    std::string _apellido;
+protected:
+    char _nombre[30];
+    char _apellido[30];
     int _dni;
-    std::string _email;
-    std::string _telefono;
+    char _email[45];
+    char _telefono[20];
     bool _estado;
 
 public:
     Persona();
 
-    std::string getNombre();
-    std::string getApellido();
+    const char* getNombre();
+    const char* getApellido();
     int getDni();
-    std::string getEmail();
-    std::string getTelefono();
+    const char* getEmail();
+    const char* getTelefono();
     bool getEstado();
 
-    void setNombre(std::string nombre);
-    void setApellido(std::string apellido);
+    void setNombre(const char* nombre);
+    void setApellido(const char* apellido);
     void setDni(int dni);
-    void setEmail(std::string email);
-    void setTelefono(std::string telefono);
+    void setEmail(const char* email);
+    void setTelefono(const char* telefono);
     void setEstado(bool estado);
 };

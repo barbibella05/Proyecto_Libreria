@@ -2,7 +2,6 @@
 #include "EmpleadoArchivo.h"
 using namespace std;
 
-/**
 
 EmpleadoArchivo::EmpleadoArchivo(string nombreArchivo){
     _nombre = nombreArchivo;
@@ -44,14 +43,6 @@ int EmpleadoArchivo::buscar(int nroEmpleado){
         }
     }
     return -1;
-}
-
-void EmpleadoArchivo::modificarEmpleado(int nroEmpleado){
-
-
-}
-void EmpleadoArchivo::listarEmpleado(){
-
 }
 
 Empleado EmpleadoArchivo::leer(int pos){
@@ -104,4 +95,4 @@ int EmpleadoArchivo::contarRegistros(){
     cantidad = bytes / sizeof(Empleado);
     return cantidad;
 }
-*/
+

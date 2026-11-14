@@ -44,13 +44,13 @@
 	"Persona.h"
 	"Fecha.h"
 
-1794440513 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\persona.h
+1794499560 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\persona.h
 	<string>
 
-1793920508 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\fecha.h
+1794526727 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\fecha.h
 	<string>
 
-1794441612 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientearchivo.cpp
+1794498775 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientearchivo.cpp
 	<iostream>
 	<string>
 	<cstdio>
@@ -59,33 +59,40 @@
 1794441612 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientearchivo.h
 	"Cliente.h"
 
-1794441535 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientemanager.cpp
+1794500028 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\clientemanager.cpp
 	<iostream>
 	<iomanip>
 	"ClienteManager.h"
 
-1794440299 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleado.cpp
+1794519294 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleado.cpp
 	<iostream>
+	<cstring>
+	"Empleado.h"
+	"Fecha.h"
 
-1794441558 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadoarchivo.cpp
+1794522026 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadoarchivo.cpp
 	<iostream>
 	"EmpleadoArchivo.h"
 
-1584205420 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\main.cpp
+1794519512 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\main.cpp
+	<iostream>
+	"ClienteManager.h"
+	"Empleado.h"
+
+1794527241 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadomanager.cpp
 	<iostream>
 
-1794421854 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadomanager.cpp
+1794499575 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\persona.cpp
 	<iostream>
-
-1794440513 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\persona.cpp
-	<iostream>
+	<cstring>
 	"Persona.h"
 
-1794421902 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\fecha.cpp
+1794526727 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\fecha.cpp
 	<iostream>
+	<string>
 	"Fecha.h"
 
-1794440207 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\personamanager.cpp
+1794499560 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\personamanager.cpp
 	<iostream>
 	<string>
 	"PersonaManager.h"
@@ -93,10 +100,11 @@
 1794440207 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\personamanager.h
 	"Persona.h"
 
-1794440452 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadoarchivo.h
+1794519512 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleadoarchivo.h
+	<string>
 	"Empleado.h"
 
-1793832095 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleado.h
+1794519174 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\empleado.h
 	"Persona.h"
 	"Fecha.h"
 
