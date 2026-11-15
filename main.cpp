@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+    /// AVISO - AUN TIENE FALLAS EL CARGAR CLIENTE
     ClienteManager clienteManager;
     Empleado empleado;
 

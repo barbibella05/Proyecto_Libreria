@@ -74,7 +74,7 @@
 	<iostream>
 	"EmpleadoArchivo.h"
 
-1794519512 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\main.cpp
+1794695764 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\main.cpp
 	<iostream>
 	"ClienteManager.h"
 	"Empleado.h"
@@ -112,4 +112,32 @@
 	"Cliente.h"
 	"ClienteArchivo.h"
 	"PersonaManager.h"
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\autor.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\autorarchivo.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\autormanager.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\editorial.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\editorialarchivo.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\editorialmanager.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\genero.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\generoarchivo.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\generomanager.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\libro.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\libroarchivo.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\libromanager.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\menucls.cpp
+
+1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\menuprincipalmanager.cpp
 
