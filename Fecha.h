@@ -7,6 +7,7 @@ private:
 
     void establecerFechaPorDefecto();
     bool esBisiesto();
+    bool esFechaValida(int dia, int mes, int anio);
     void agregarDia();
 
 public:

@@ -9,12 +9,15 @@ private:
     ClienteArchivo _archivo;
     PersonaManager _personaManager;
 
-    Cliente CargarCliente(int nroCliente);
+    Cliente CargarCliente();
+    int GenerarNroCliente();
     bool ExisteNro(int nroCliente);
     Fecha PedirFecha();
 
     void MostrarEncabezado();
+    void MostrarEncabezadoInactivos();
     void MostrarCliente(Cliente cliente);
+    void MostrarClienteListado(Cliente cliente);
 
 public:
     void Menu();

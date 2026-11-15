@@ -1,11 +1,10 @@
 #include <iostream>
 #include <iomanip>
+#include <string>
 #include "EmpleadoManager.h"
 using namespace std;
 
-///SEGUIR CON NUEVO EMPLEADO
 
-/**
 void EmpleadoManager::Menu(){
     int opcion;
 
@@ -55,27 +54,7 @@ void EmpleadoManager::Menu(){
 }
 
 void EmpleadoManager::NuevoEmpleado(){
-   int nroEmpleado;
-
-   cout << "Numero del empleado: ";
-   cin >> nroCliente;
-
-   if (ExisteNro(nroEmpleado)) {
-        cout << "Ya existe un empleado con ese numero." << endl;
-        return;
-    }
-
-    cout<< "Ingrese el CUIL: ";
-    cin>>cuil;
-
-    cout >> "Ingrese la direccion: ";
-    cin>>direccion;
-
-    cout << "Ingrese la fecha de ingreso: ";
-    cin >> Fecha;
-
-
-   Empleado empleado = CargarEmpleado(nroEmpleado);
+    Empleado empleado = CargarEmpleado();
 
    if(_archivo.agregarEmpleado(empleado)){
       cout << "Empleado guardado correctamente." << endl;
@@ -100,10 +79,10 @@ void EmpleadoManager::ModificarEmpleado(){
     }
 
     Empleado reg = _archivo.leer(pos);
-    MostrarEncabezado();
+    cout << "\n========== DATOS DEL EMPLEADO ==========" << endl;
     MostrarEmpleado(reg);
 
-    cout << endl << "Nuevo apellido";
+    cout << endl << "Ingrese el nuevo apellido: ";
     cin >> apellidoNuevo;
 
     reg.setApellido(apellidoNuevo.c_str());
@@ -121,46 +100,72 @@ void EmpleadoManager::ModificarEmpleado(){
 }
 
 void EmpleadoManager::ListarTodos(){
-   int cantidadRegistros = _archivo.contarRegistros();
+    int cantidad = _archivo.contarRegistros();
 
-   if(cantidadRegistros == 0){
-      cout << "No hay cliente cargados." << endl;
-      return;
-   }
-
-   Empleado *vec = new Empleado[cantidadRegistros];
-   if (vec == NULL){
-    return;
-   }
-
-   MostrarEncabezado();
-
-   _archivo.leer(cantidadRegistros, vec);
-
-   for(int i = 0; i < cantidadRegistros; i++){
-      Empleado reg = vec[i];
-      if (!reg.getEstado()) {
-//            cout << colors::bright_red;
-        }
-        else {
- //           cout << colors::bright_green;
-        }
-
-        MostrarEmpleado(reg);
+    if (cantidad == 0) {
+        cout << "No hay empleados cargados." << endl;
+        return;
     }
-  //  cout << colors::reset;
 
-    cout << endl << "Cantidad de empleado: " << cantidadRegistros << endl;
+    Empleado *vec = new Empleado[cantidad];
 
-    cout << "Los registros inactivos se muestran en "
-  //       << colors::bright_red << "rojo"
-  //       << colors::reset
-         << endl;
+    _archivo.leer(cantidad, vec);
+
+    int activos = 0;
+    int inactivos = 0;
+
+    cout << "========== EMPLEADOS ACTIVOS ==========" << endl;
+
+    MostrarEncabezadoActivos();
+
+    for (int i = 0; i < cantidad; i++) {
+
+        if (vec[i].getEstado()) {
+
+            cout << left
+                 << setw(8) << vec[i].getNroEmpleado()
+                 << setw(13) << vec[i].getApellido()
+                 << setw(10) << vec[i].getDni()
+                 << setw(15) << vec[i].getFechaIngreso().toString()
+                 << setw(15) << MostrarPerfil(vec[i].getPerfil())
+                 << endl;
+
+            activos++;
+        }
+    }
+
+    cout << endl;
+    cout << "Cantidad de empleados activos: " << activos << endl;
+
+
+    cout << "\n========== EMPLEADOS INACTIVOS ==========" << endl;
+
+    MostrarEncabezadoInactivos();
+
+    for (int i = 0; i < cantidad; i++) {
+
+        if (!vec[i].getEstado()) {
+
+            cout << left
+                 << setw(8) << vec[i].getNroEmpleado()
+                 << setw(13) << vec[i].getApellido()
+                 << setw(10) << vec[i].getDni()
+                 << setw(15) << vec[i].getFechaIngreso().toString()
+                 << setw(15) << vec[i].getFechaEgreso().toString()
+                 << setw(15) << MostrarPerfil(vec[i].getPerfil())
+                 << endl;
+
+            inactivos++;
+        }
+    }
+
+    cout << endl;
+    cout << "Cantidad de empleados inactivos: " << inactivos << endl;
 
     delete[] vec;
 }
 
-void EmpleadoManager::ListarXnroEmpelado(){
+void EmpleadoManager::BuscarXNnroEmpleado(){
     int nroEmpleado;
 
     cout << "Ingresar numero de empleado: ";
@@ -181,7 +186,7 @@ void EmpleadoManager::ListarXnroEmpelado(){
 void EmpleadoManager::Eliminar(){
     int nroEmpleado;
     cout << "Numero de empleado del registro a eliminar: ";
-    cin >> nroCliente;
+    cin >> nroEmpleado;
 
     int pos = _archivo.buscar(nroEmpleado);
 
@@ -189,10 +194,16 @@ void EmpleadoManager::Eliminar(){
         cout << "El registro no existe" << endl;
         return;
     }
+
     Empleado reg = _archivo.leer(pos);
+
+    cout << "Ingrese la fecha de egreso:" << endl;
+    Fecha fechaEgreso = PedirFecha();
+
+    reg.setFechaEgreso(fechaEgreso);
     reg.setEstado(false);
 
-    bool ok = _archivo.eliminar(pos);
+    bool ok = _archivo.guardar(reg,pos);
 
     if (ok){
         cout << "Registro eliminado correctamente" << endl;
@@ -204,23 +215,55 @@ void EmpleadoManager::Eliminar(){
     return;
 }
 
-Empleado EmpleadoManager::CargarEmpleado(int nroEmpleado) {
-    Persona persona = _personaManager.CrearPersona();
-    Fecha fechaRegistro = PedirFecha();
+Empleado EmpleadoManager::CargarEmpleado(){
+    int nroEmpleado = GenerarNroEmpleado();
 
-    Empleado empleado(nroEmpleado, fechaRegistro);
+    cout << "Numero de empleado asignado: " << nroEmpleado << endl;
+
+    Persona persona = _personaManager.CrearPersona();
+
+    Fecha fechaIngreso = PedirFecha();
+
+    string direccion;
+    int perfil;
+
+    cout << "Ingrese la direccion: ";
+    cin.ignore();
+    getline(cin, direccion);
+
+    cout << endl;
+    cout << "Seleccione el perfil:" << endl;
+    cout << "1. Vendedor" << endl;
+    cout << "2. Cajero" << endl;
+    cout << "3. Supervisor" << endl;
+    cout << "4. Gerente" << endl;
+    cout << "Opcion: ";
+    cin >> perfil;
+
+    while(perfil < 1 || perfil > 4) {
+        cout << "Perfil incorrecto. Ingrese nuevamente: ";
+        cin >> perfil;
+    }
+
+    Empleado empleado;
+
+    empleado.setNroEmpleado(nroEmpleado);
+    empleado.setFechaIngreso(fechaIngreso);
 
     empleado.setNombre(persona.getNombre());
     empleado.setApellido(persona.getApellido());
     empleado.setDni(persona.getDni());
     empleado.setEmail(persona.getEmail());
     empleado.setTelefono(persona.getTelefono());
+
+    empleado.setDireccion(direccion.c_str());
+    empleado.setPerfil(perfil);
     empleado.setEstado(true);
 
     return empleado;
 }
 
-bool EmpleadoManager::ExisteNro(int nroCEmpleado) {
+bool EmpleadoManager::ExisteNro(int nroEmpleado) {
 
     return _archivo.buscar(nroEmpleado) >= 0;
 }
@@ -228,15 +271,52 @@ bool EmpleadoManager::ExisteNro(int nroCEmpleado) {
 Fecha EmpleadoManager::PedirFecha(){
    int dia, mes, anio;
 
-   cout << "Fecha de registro" << endl;
-   cout << "  Dia: ";
-   cin >> dia;
-   cout << "  Mes: ";
-   cin >> mes;
-   cout << "  Anio: ";
-   cin >> anio;
+    while (true) {
+        cout << "Fecha de ingreso" << endl;
 
-   return Fecha(dia, mes, anio);
+        cout << "  Dia: ";
+        cin >> dia;
+
+        cout << "  Mes: ";
+        cin >> mes;
+
+        cout << "  Anio: ";
+        cin >> anio;
+
+        bool valida = true;
+
+        if (anio < 1900 || mes < 1 || mes > 12 || dia < 1) {
+            valida = false;
+        }
+        else {
+            int diasMes;
+
+            if (mes == 2) {
+                if ((anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0) {
+                    diasMes = 29;
+                }
+                else {
+                    diasMes = 28;
+                }
+            }
+            else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+                diasMes = 30;
+            }
+            else {
+                diasMes = 31;
+            }
+
+            if (dia > diasMes) {
+                valida = false;
+            }
+        }
+
+        if (valida) {
+            return Fecha(dia, mes, anio);
+        }
+
+        cout << "\nFecha incorrecta. Ingrese nuevamente.\n\n";
+    }
 }
 
 
@@ -252,10 +332,80 @@ void EmpleadoManager::MostrarEncabezado(){
 }
 
 void EmpleadoManager::MostrarEmpleado(Empleado empleado){
-   cout << left
-         << setw(10) << empleado.getNroCliente()
-         << setw(15) << empleado.getFechaRegistro().toString()
-         << setw(12) << (empleado.getEstado() ? "Activo" : "Inactivo")
-         << endl;
+       cout << "----------------------------------------" << endl;
+    cout << "Numero de empleado: " << empleado.getNroEmpleado() << endl;
+    cout << "Nombre: " << empleado.getNombre() << endl;
+    cout << "Apellido: " << empleado.getApellido() << endl;
+    cout << "DNI: " << empleado.getDni() << endl;
+    cout << "Email: " << empleado.getEmail() << endl;
+    cout << "Telefono: " << empleado.getTelefono() << endl;
+    cout << "Direccion: " << empleado.getDireccion() << endl;
+    cout << "Fecha de ingreso: " << empleado.getFechaIngreso().toString() << endl;
+    cout << "Fecha de egreso: " << empleado.getFechaEgreso().toString() << endl;
+
+    cout << "Perfil: ";
+
+    switch (empleado.getPerfil()) {
+        case 1: cout << "Vendedor"; break;
+        case 2: cout << "Cajero"; break;
+        case 3: cout << "Supervisor"; break;
+        case 4: cout << "Gerente"; break;
+        default: cout << "Sin perfil"; break;
+    }
+
+    cout << endl;
+
+    cout << "Estado: " << (empleado.getEstado() ? "Activo" : "Inactivo") << endl;
+    cout << "----------------------------------------" << endl;
 }
-*/
+
+void EmpleadoManager::MostrarEncabezadoActivos() {
+    cout << left
+         << setw(8) << "Numero"
+         << setw(13) << "Apellido"
+         << setw(10) << "DNI"
+         << setw(15) << "Fecha ingreso"
+         << setw(15) << "Perfil"
+         << endl;
+
+    cout << "-------------------------------------------------------" << endl;
+}
+
+void EmpleadoManager::MostrarEncabezadoInactivos() {
+    cout << left
+         << setw(8) << "Numero"
+         << setw(13) << "Apellido"
+         << setw(10) << "DNI"
+         << setw(15) << "Fecha ingreso"
+         << setw(15) << "Fecha egreso"
+         << setw(15) << "Perfil"
+         << endl;
+
+    cout << "--------------------------------------------------------------------" << endl;
+}
+
+string EmpleadoManager::MostrarPerfil(int perfil) {
+
+    switch (perfil) {
+        case 1: return "Vendedor";
+        case 2: return "Cajero";
+        case 3: return "Supervisor";
+        case 4: return "Gerente";
+        default: return "Sin perfil";
+    }
+}
+
+int EmpleadoManager::GenerarNroEmpleado(){
+    int cantidad = _archivo.contarRegistros();
+    int mayor = 999;
+
+    for(int i = 0; i < cantidad; i++){
+        Empleado empleado = _archivo.leer(i);
+
+        if(empleado.getNroEmpleado() > mayor){
+            mayor = empleado.getNroEmpleado();
+        }
+    }
+
+    return mayor + 1;
+}

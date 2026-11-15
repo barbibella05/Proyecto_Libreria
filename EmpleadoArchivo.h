@@ -19,5 +19,4 @@ public:
     bool eliminar(int pos);
 
     int contarRegistros();
-
 };

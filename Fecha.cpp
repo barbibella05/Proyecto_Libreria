@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <limits>
 #include "Fecha.h"
 using namespace std;
 
@@ -17,6 +18,29 @@ bool Fecha::esBisiesto() {
     }
 
     return false;
+}
+
+// Comprueba si una fecha es valida
+bool Fecha::esFechaValida(int dia, int mes, int anio) {
+
+    if (anio < 1900 || anio > 2100 || mes < 1 || mes > 12 || dia < 1) {
+        return false;
+    }
+
+    int dias[12] = {31, 28, 31, 30, 31, 30,
+                    31, 31, 30, 31, 30, 31};
+
+    bool bisiesto = ((anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0);
+
+    if (bisiesto) {
+        dias[1] = 29;
+    }
+
+    if (dia > dias[mes - 1]) {
+        return false;
+    }
+
+    return true;
 }
 
 // Agrega un día a la fecha
@@ -48,61 +72,52 @@ Fecha::Fecha() {
 
 // Constructor con parámetros
 Fecha::Fecha(int dia, int mes, int anio) {
+    if (esFechaValida(dia, mes, anio)) {
+        _dia = dia;
+        _mes = mes;
+        _anio = anio;
+    }
+    else {
+        establecerFechaPorDefecto();
+    }
+}
+
+void Fecha::Cargar() {
+
+    int dia, mes, anio;
+    bool fechaValida = false;
+
+    while (!fechaValida) {
+
+        cout << "Dia: ";
+        cout << endl;
+        cout << "Mes: ";
+        cout << endl;
+        cout << "Anio: ";
+
+        if (!(cin >> dia >> mes >> anio)) {
+
+            cout << "Debe ingresar solamente numeros." << endl;
+
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        }
+        else if (!esFechaValida(dia, mes, anio)) {
+
+            cout << "Fecha incorrecta. Ingrese una fecha valida." << endl;
+
+        }
+        else {
+            fechaValida = true;
+        }
+    }
+
     _dia = dia;
     _mes = mes;
     _anio = anio;
-
-    if (_dia <= 0 || _mes <= 0 || _anio <= 0 || _mes > 12) {
-        establecerFechaPorDefecto();
-    }
-    else {
-        int dias[12] = {31, 28, 31, 30, 31, 30,
-                        31, 31, 30, 31, 30, 31};
-
-        if (esBisiesto()) {
-            dias[1]++;
-        }
-
-        if (_dia > dias[_mes - 1]) {
-            establecerFechaPorDefecto();
-        }
-    }
 }
 
-// Carga una fecha por teclado
-void Fecha::Cargar() {
-    int dia, mes, anio;
-
-    cout << "Dia: ";
-    cin >> dia;
-
-    cout << "Mes: ";
-    cin >> mes;
-
-    cout << "Anio: ";
-    cin >> anio;
-
-    Fecha aux(dia, mes, anio);
-
-    while (aux.getAnio() == 1900 && (dia != 1 || mes != 1 || anio != 1900)) {
-        cout << "Fecha incorrecta. Ingrese nuevamente." << endl;
-
-        cout << "Dia: ";
-        cin >> dia;
-
-        cout << "Mes: ";
-        cin >> mes;
-
-        cout << "Anio: ";
-        cin >> anio;
-
-        aux = Fecha(dia, mes, anio);
-    }
-
-    _dia = aux.getDia();
-    _mes = aux.getMes();
-    _anio = aux.getAnio();
-}
 
 // Getters
 int Fecha::getDia() {
@@ -117,32 +132,25 @@ int Fecha::getAnio() {
     return _anio;
 }
 
-// Setters
 void Fecha::setDia(int dia) {
-    Fecha aux(dia, _mes, _anio);
-
-    _dia = aux.getDia();
-    _mes = aux.getMes();
-    _anio = aux.getAnio();
+    if (esFechaValida(dia, _mes, _anio)) {
+        _dia = dia;
+    }
 }
 
 void Fecha::setMes(int mes) {
-    Fecha aux(_dia, mes, _anio);
-
-    _dia = aux.getDia();
-    _mes = aux.getMes();
-    _anio = aux.getAnio();
+    if (esFechaValida(_dia, mes, _anio)) {
+        _mes = mes;
+    }
 }
 
 void Fecha::setAnio(int anio) {
-    Fecha aux(_dia, _mes, anio);
-
-    _dia = aux.getDia();
-    _mes = aux.getMes();
-    _anio = aux.getAnio();
+    if (esFechaValida(_dia, _mes, anio)) {
+        _anio = anio;
+    }
 }
 
-// Agrega una cantidad de días
+// Agrega una cantidad de dias
 void Fecha::agregarDias(int cantidadDias) {
     if (cantidadDias > 0) {
         for (int i = 0; i < cantidadDias; i++) {
@@ -153,6 +161,7 @@ void Fecha::agregarDias(int cantidadDias) {
 
 // Devuelve la fecha en el formato solicitado
 string Fecha::toString(string formatoFecha) {
+
     string DD = to_string(_dia);
     string MM = to_string(_mes);
     string YYYY = to_string(_anio);
@@ -165,10 +174,13 @@ string Fecha::toString(string formatoFecha) {
         MM = "0" + MM;
     }
 
+    if (_anio < 1000) {
+        YYYY = "0" + YYYY;
+    }
+
     if (formatoFecha == "YYYY/MM/DD") {
         return YYYY + "/" + MM + "/" + DD;
     }
 
     return DD + "/" + MM + "/" + YYYY;
 }
-

@@ -53,24 +53,17 @@ void ClienteManager::Menu(){
 }
 
 void ClienteManager::NuevoCliente(){
-   int nroCliente;
+   Cliente cliente = CargarCliente();
 
-   cout << "Numero del cliente: ";
-   cin >> nroCliente;
+    cout << "Numero de cliente asignado: "
+         << cliente.getNroCliente() << endl;
 
-   if (ExisteNro(nroCliente)) {
-        cout << "Ya existe un cliente con ese numero." << endl;
-        return;
+    if (_archivo.agregarCliente(cliente)) {
+        cout << "Cliente guardado correctamente." << endl;
     }
-
-   Cliente cliente = CargarCliente(nroCliente);
-
-   if(_archivo.agregarCliente(cliente)){
-      cout << "Cliente guardado correctamente." << endl;
-   }
-   else{
-      cout << "No se pudo guardar el cliente." << endl;
-   }
+    else {
+        cout << "No se pudo guardar el cliente." << endl;
+    }
 }
 
 void ClienteManager::ModificarCliente(){
@@ -82,68 +75,82 @@ void ClienteManager::ModificarCliente(){
 
     int pos = _archivo.buscar(nroCliente);
 
-    if (pos < 0){
-        cout << "El registro no existe" << endl;
+    if (pos < 0) {
+        cout << "El registro no existe." << endl;
         return;
     }
 
     Cliente reg = _archivo.leer(pos);
-    MostrarEncabezado();
+
+    if (!reg.getEstado()) {
+        cout << "No se puede modificar un cliente inactivo." << endl;
+        return;
+    }
+
+    cout << "\n========== DATOS DEL CLIENTE ==========" << endl;
+
     MostrarCliente(reg);
 
-    cout << endl << "Nuevo apellido";
+    cout << "\nIngrese el nuevo apellido: ";
     cin >> apellidoNuevo;
 
     reg.setApellido(apellidoNuevo.c_str());
 
     bool ok = _archivo.guardar(reg, pos);
 
-    if (ok){
-        cout << "Registro editado correctamente" << endl;
+    if (ok) {
+        cout << "Cliente modificado correctamente." << endl;
     }
-    else{
-        cout << "No se pudo editar el registro" << endl;
+    else {
+        cout << "No se pudo modificar el cliente." << endl;
     }
-
-    return;
 }
 
 void ClienteManager::ListarTodos(){
-   int cantidadRegistros = _archivo.contarRegistros();
+   int cantidad = _archivo.contarRegistros();
 
-   if(cantidadRegistros == 0){
-      cout << "No hay cliente cargados." << endl;
-      return;
-   }
-
-   Cliente *vec = new Cliente[cantidadRegistros];
-   if (vec == NULL){
-    return;
-   }
-
-   MostrarEncabezado();
-
-   _archivo.leer(cantidadRegistros, vec);
-
-   for(int i = 0; i < cantidadRegistros; i++){
-      Cliente reg = vec[i];
-      if (!reg.getEstado()) {
-//            cout << colors::bright_red;
-        }
-        else {
- //           cout << colors::bright_green;
-        }
-
-        MostrarCliente(reg);
+    if (cantidad == 0) {
+        cout << "No hay clientes cargados." << endl;
+        return;
     }
-  //  cout << colors::reset;
 
-    cout << endl << "Cantidad de clientes: " << cantidadRegistros << endl;
+    Cliente *vec = new Cliente[cantidad];
 
-    cout << "Los registros inactivos se muestran en "
-  //       << colors::bright_red << "rojo"
-  //       << colors::reset
-         << endl;
+    _archivo.leer(cantidad, vec);
+
+    int activos = 0;
+    int inactivos = 0;
+
+    cout << "\n========== CLIENTES ACTIVOS ==========" << endl;
+
+    MostrarEncabezado();
+
+    for (int i = 0; i < cantidad; i++) {
+
+        if (vec[i].getEstado()) {
+            MostrarClienteListado(vec[i]);
+            activos++;
+        }
+    }
+
+    cout << endl;
+    cout << "Cantidad de clientes activos: " << activos << endl;
+
+
+    cout << "\n========== CLIENTES INACTIVOS ==========" << endl;
+
+    MostrarEncabezadoInactivos();
+
+    for (int i = 0; i < cantidad; i++) {
+
+        if (!vec[i].getEstado()) {
+            MostrarClienteListado(vec[i]);
+            inactivos++;
+        }
+    }
+
+    cout << endl;
+    cout << "Cantidad de clientes inactivos: " << inactivos << endl;
 
     delete[] vec;
 }
@@ -157,11 +164,11 @@ void ClienteManager::ListarXnroCliente(){
     int pos = _archivo.buscar(nroCliente);
 
     if (pos >= 0){
-        MostrarEncabezado();
-        MostrarCliente(_archivo.leer(pos));
+        Cliente cliente = _archivo.leer(pos);
+        MostrarCliente(cliente);
     }
     else{
-        cout << "No existe un cliente con ese numero; " << nroCliente << endl;
+        cout << "No existe un cliente con ese numero: " << nroCliente << endl;
     }
 
 }
@@ -177,8 +184,6 @@ void ClienteManager::Eliminar(){
         cout << "El registro no existe" << endl;
         return;
     }
-    Cliente reg = _archivo.leer(pos);
-    reg.setEstado(false);
 
     bool ok = _archivo.eliminar(pos);
 
@@ -192,8 +197,11 @@ void ClienteManager::Eliminar(){
     return;
 }
 
-Cliente ClienteManager::CargarCliente(int nroCliente) {
+Cliente ClienteManager::CargarCliente() {
+    int nroCliente = GenerarNroCliente();
+
     Persona persona = _personaManager.CrearPersona();
+
     Fecha fechaRegistro = PedirFecha();
 
     Cliente cliente(nroCliente, fechaRegistro);
@@ -208,6 +216,19 @@ Cliente ClienteManager::CargarCliente(int nroCliente) {
     return cliente;
 }
 
+void ClienteManager::MostrarCliente(Cliente cliente) {
+    cout << "----------------------------------------" << endl;
+    cout << "Numero de cliente: " << cliente.getNroCliente() << endl;
+    cout << "Nombre: " << cliente.getNombre() << endl;
+    cout << "Apellido: " << cliente.getApellido() << endl;
+    cout << "DNI: " << cliente.getDni() << endl;
+    cout << "Email: " << cliente.getEmail() << endl;
+    cout << "Telefono: " << cliente.getTelefono() << endl;
+    cout << "Fecha de registro: " << cliente.getFechaRegistro().toString() << endl;
+    cout << "Estado: " << (cliente.getEstado() ? "Activo" : "Inactivo") << endl;
+    cout << "----------------------------------------" << endl;
+}
+
 bool ClienteManager::ExisteNro(int nroCliente) {
 
     return _archivo.buscar(nroCliente) >= 0;
@@ -216,33 +237,100 @@ bool ClienteManager::ExisteNro(int nroCliente) {
 Fecha ClienteManager::PedirFecha(){
    int dia, mes, anio;
 
-   cout << "Fecha de registro" << endl;
-   cout << "  Dia: ";
-   cin >> dia;
-   cout << "  Mes: ";
-   cin >> mes;
-   cout << "  Anio: ";
-   cin >> anio;
+   while (true) {
 
-   return Fecha(dia, mes, anio);
+        cout << "\nFecha de registro" << endl;
+
+        cout << "  Dia: ";
+        cin >> dia;
+
+        cout << "  Mes: ";
+        cin >> mes;
+
+        cout << "  Anio: ";
+        cin >> anio;
+
+        bool valida = true;
+
+        if (anio < 1900 || mes < 1 || mes > 12 || dia < 1) {
+            valida = false;
+        }
+        else {
+
+            int diasMes;
+
+            if (mes == 2) {
+                if ((anio % 4 == 0 && anio % 100 != 0) || anio % 400 == 0) {
+                    diasMes = 29;
+                }
+                else {
+                    diasMes = 28;
+                }
+            }
+            else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+                diasMes = 30;
+            }
+            else {
+                diasMes = 31;
+            }
+
+            if (dia > diasMes) {
+                valida = false;
+            }
+        }
+
+        if (valida) {
+            return Fecha(dia, mes, anio);
+        }
+
+        cout << "\nFecha incorrecta. Ingrese nuevamente.\n";
+    }
 }
 
+void ClienteManager::MostrarClienteListado(Cliente cliente) {
+    cout << left
+         << setw(8) << cliente.getNroCliente()
+         << setw(13) << cliente.getApellido()
+         << setw(12) << cliente.getDni()
+         << setw(16) << cliente.getFechaRegistro().toString()
+         << endl;
+}
 
 void ClienteManager::MostrarEncabezado(){
-   cout << endl;
    cout << left
-         << setw(10) << "Numero"
-         << setw(15) << "Fecha registro"
-         << setw(12) << "Estado"
+         << setw(8) << "Numero"
+         << setw(13) << "Apellido"
+         << setw(12) << "DNI"
+         << setw(16) << "Fecha registro"
          << endl;
 
-    cout << "-------------------------------------" << endl;
+    cout << "--------------------------------------------------" << endl;
 }
 
-void ClienteManager::MostrarCliente(Cliente cliente){
-   cout << left
-         << setw(10) << cliente.getNroCliente()
-         << setw(15) << cliente.getFechaRegistro().toString()
-         << setw(12) << (cliente.getEstado() ? "Activo" : "Inactivo")
+void ClienteManager::MostrarEncabezadoInactivos() {
+
+    cout << left
+         << setw(8) << "Numero"
+         << setw(13) << "Apellido"
+         << setw(12) << "DNI"
+         << setw(16) << "Fecha registro"
          << endl;
+
+    cout << "--------------------------------------------------" << endl;
+}
+
+int ClienteManager::GenerarNroCliente() {
+    int cantidad = _archivo.contarRegistros();
+    int mayor = 999;
+
+    for (int i = 0; i < cantidad; i++) {
+    Cliente cliente = _archivo.leer(i);
+
+    cout << "Registro " << i
+         << " - Numero: " << cliente.getNroCliente() << endl;
+}
+
+    cout << "Cantidad de registros: " << cantidad << endl;
+cout << "Numero mayor encontrado: " << mayor << endl;
+    return mayor + 1;
 }

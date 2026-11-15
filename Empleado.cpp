@@ -8,7 +8,6 @@ using namespace std;
 Empleado::Empleado(){
       _nroEmpleado= 0;
       strcpy(_direccion, "");
-      strcpy(_cuil, "");
       _fechaIngreso = Fecha();
       _fechaEgreso = Fecha();
       _perfil = 0;
@@ -19,9 +18,6 @@ int Empleado::getNroEmpleado(){
 }
 const char* Empleado::getDireccion(){
     return _direccion;
-}
-const char* Empleado::getCuil(){
-    return _cuil;
 }
 Fecha Empleado::getFechaIngreso(){
     return _fechaIngreso;
@@ -38,9 +34,6 @@ void Empleado::setNroEmpleado(int nroEmpleado){
 }
 void Empleado::setDireccion(const char* direccion){
     strcpy(_direccion, direccion);
-}
-void Empleado::setCuil(const char* cuil){
-    strcpy(_cuil, cuil);
 }
 void Empleado::setFechaIngreso(Fecha fechaIngreso){
     _fechaIngreso = fechaIngreso;

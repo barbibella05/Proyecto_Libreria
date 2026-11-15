@@ -96,3 +96,6 @@ int EmpleadoArchivo::contarRegistros(){
     return cantidad;
 }
 
+bool EmpleadoArchivo::guardar(Empleado reg, int pos){
+    return agregarEmpleado(reg, pos);
+}

@@ -6,7 +6,7 @@ using namespace std;
 Persona::Persona(){
     strcpy(_nombre, "");
     strcpy(_apellido, "");
-    _dni = 0;
+    strcpy(_dni, "");
     strcpy(_email, "");
     strcpy(_telefono, "");
     _estado = true;
@@ -20,7 +20,7 @@ const char* Persona::getApellido(){
     return _apellido;
 }
 
-int Persona::getDni(){
+const char* Persona::getDni() {
     return _dni;
 }
 
@@ -44,8 +44,8 @@ void Persona::setApellido(const char* apellido){
     strcpy(_apellido, apellido);
 }
 
-void Persona::setDni(int dni){
-    _dni = dni;
+void Persona::setDni(const char* dni) {
+    strcpy(_dni, dni);
 }
 
 void Persona::setEmail(const char* email){
