@@ -1,6 +1,22 @@
-#ifndef LIBROARCHIVO_H_INCLUDED
-#define LIBROARCHIVO_H_INCLUDED
+#pragma once
+#include <string>
+#include "Libro.h"
 
+class LibroArchivo{
+private:
+    std::string _nombre;
+public:
+    LibroArchivo(std::string nombre = "libro.dat");
+    bool agregarLibro(Libro reg);
+    bool agregarLibro(Libro reg, int pos);//sobrescribe
 
+    int buscar(int idGenero); //ISBN esta como char. Conviene que este como INT
 
-#endif // LIBROARCHIVO_H_INCLUDED
+    Genero leer(int pos);
+    bool leer(int cantidadRegistros, Genero *vec);
+
+    bool guardar(Genero reg, int pos);
+    bool eliminar(int pos);
+
+    int contarRegistros();
+};
