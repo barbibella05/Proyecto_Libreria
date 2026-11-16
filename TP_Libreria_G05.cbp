@@ -44,6 +44,12 @@
 		<Unit filename="ClienteArchivo.h" />
 		<Unit filename="ClienteManager.cpp" />
 		<Unit filename="ClienteManager.h" />
+		<Unit filename="DetalleVenta.cpp" />
+		<Unit filename="DetalleVenta.h" />
+		<Unit filename="DetalleVentaArchivo.cpp" />
+		<Unit filename="DetalleVentaArchivo.h" />
+		<Unit filename="DetalleVentaManager.cpp" />
+		<Unit filename="DetalleVentaManager.h" />
 		<Unit filename="Editorial.cpp" />
 		<Unit filename="Editorial.h" />
 		<Unit filename="EditorialArchivo.cpp" />
@@ -56,6 +62,12 @@
 		<Unit filename="EmpleadoArchivo.h" />
 		<Unit filename="EmpleadoManager.cpp" />
 		<Unit filename="EmpleadoManager.h" />
+		<Unit filename="Factura.cpp" />
+		<Unit filename="Factura.h" />
+		<Unit filename="FacturaArchivo.cpp" />
+		<Unit filename="FacturaArchivo.h" />
+		<Unit filename="FacturaManager.cpp" />
+		<Unit filename="FacturaManager.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="Genero.cpp" />
@@ -64,6 +76,9 @@
 		<Unit filename="GeneroArchivo.h" />
 		<Unit filename="GeneroManager.cpp" />
 		<Unit filename="GeneroManager.h" />
+		<Unit filename="InformeManager.cpp" />
+		<Unit filename="InformeManager.h" />
+		<Unit filename="LEEME_VENTAS.txt" />
 		<Unit filename="Libro.cpp" />
 		<Unit filename="Libro.h" />
 		<Unit filename="LibroArchivo.cpp" />
@@ -80,6 +95,7 @@
 		<Unit filename="PersonaManager.h" />
 		<Unit filename="TP_Libreria_G05.cbp" />
 		<Unit filename="cliente.dat" />
+		<Unit filename="genero.dat" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />

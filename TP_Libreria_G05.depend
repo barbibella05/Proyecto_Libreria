@@ -36,7 +36,7 @@
 	<iostream>
 	"Persona.h"
 
-1794441052 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\cliente.cpp
+1794866912 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\cliente.cpp
 	<iostream>
 	"Cliente.h"
 
@@ -125,7 +125,7 @@
 
 1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\autormanager.cpp
 
-1794841035 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\editorial.cpp
+1794867293 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\editorial.cpp
 	<iostream>
 	<string>
 	"Editorial.h"
@@ -134,7 +134,7 @@
 
 1794713886 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\editorialmanager.cpp
 
-1794798286 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\genero.cpp
+1794866912 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\genero.cpp
 	<iostream>
 	<cstring>
 	"Genero.h"
@@ -178,7 +178,7 @@
 
 1794798377 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\menucls.h
 
-1794798377 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\editorial.h
+1794867172 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\editorial.h
 	<cstring>
 
 1794840957 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\menuprincipalmanager.h
@@ -206,4 +206,59 @@
 	"Genero.h"
 
 1794713886 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\libromanager.h
+
+1794798377 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detalleventa.cpp
+	<iostream>
+	<cstring>
+	"DetalleVenta.h"
+
+1794798377 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detalleventa.h
+
+1794798377 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detalleventaarchivo.cpp
+	<iostream>
+	<cstdio>
+	"DetalleVentaArchivo.h"
+
+1794798377 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detalleventaarchivo.h
+	<string>
+	"DetalleVenta.h"
+
+1794798377 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detalleventamanager.cpp
+	<iostream>
+	<string>
+	<iomanip>
+	<cstdlib>
+	"DetalleVentaManager.h"
+
+1794798377 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detalleventamanager.h
+	"DetalleVenta.h"
+	"DetalleVentaArchivo.h"
+
+1794866362 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\factura.cpp
+	<iostream>
+	"Factura.h"
+
+1794866362 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\factura.h
+	"Fecha.h"
+
+1794866362 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\facturaarchivo.cpp
+	<iostream>
+	<cstdio>
+	"FacturaArchivo.h"
+
+1794866362 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\facturaarchivo.h
+	<string>
+	"Factura.h"
+
+1794866362 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\facturamanager.cpp
+	<iostream>
+	<iomanip>
+	<cstdlib>
+	"FacturaManager.h"
+
+1794866362 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\facturamanager.h
+	"Factura.h"
+	"FacturaArchivo.h"
+	"DetalleVentaManager.h"
+	"ClienteArchivo.h"
 

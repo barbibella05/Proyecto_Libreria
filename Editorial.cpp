@@ -40,6 +40,6 @@ const char* Editorial::getCuit(){
     return _cuit;
 }
 
-bool Editorial::getEstado{
+bool Editorial::getEstado(){
     return _estado;
 }

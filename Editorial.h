@@ -20,7 +20,7 @@ public:
     void setEstado(bool estado);
 
 //GETTERS - MAI
-    int getIdEditorial()const;
+    int getIdEditorial();
     const char* getNombreEd();
     const char* getCuit();
     bool getEstado();

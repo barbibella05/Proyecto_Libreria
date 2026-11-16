@@ -67,8 +67,8 @@ void FacturaManager::NuevaVenta() {
     int nroEmpleado;
     cout << "Numero de empleado: ";
     cin >> nroEmpleado;
-    if (!EmpleadoValido(nroEmpleado)) {
-        cout << "El empleado no existe o esta dado de baja." << endl;
+    if (nroEmpleado <= 0) {
+        cout << "Numero de empleado invalido." << endl;
         return;
     }
 
@@ -247,16 +247,6 @@ bool FacturaManager::ClienteValido(int nroCliente) {
 
     Cliente cliente = _archivoClientes.leer(pos);
     return cliente.getEstado();
-}
-
-bool FacturaManager::EmpleadoValido(int nroEmpleado) {
-    int pos = _archivoEmpleados.buscar(nroEmpleado);
-    if (pos < 0) {
-        return false;
-    }
-
-    Empleado empleado = _archivoEmpleados.leer(pos);
-    return empleado.getEstado();
 }
 
 void FacturaManager::MostrarEncabezado() {

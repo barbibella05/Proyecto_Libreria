@@ -30,7 +30,7 @@ public:
     void setFechaPublicacion(Fecha fechaPublicacion);
     void setIdGenero(int idGenero);
     void setStock(int stock);
-    void setPrecio(flat precio);
+    void setPrecio(fl precio);
     void setEstado(bool estado);
 
 //GETTERS - MAI

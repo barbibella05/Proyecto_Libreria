@@ -5,9 +5,9 @@
 #include "EmpleadoManager.h"
 #include "GeneroManager.h"
 #include "LibroManager.h"
-#include "CompraManager.h"
-#include "VentaManager.h"
-#include "ConfiguracionManager.h"
+//#include "CompraManager.h"
+//#include "VentaManager.h"
+//#include "ConfiguracionManager.h"
 #include "InformeManager.h"
 
 /// ---- MAI - BARBI ----
