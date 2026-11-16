@@ -1,4 +1,3 @@
-///TPI G08 - MAI VersionCode
 #pragma once
 
 //Mai - Barbi

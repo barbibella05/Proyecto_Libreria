@@ -1,4 +1,3 @@
-///TPI G08 - MAI VersionCode
 #include "MenuCls.h"
 #include <cstdio>
 #include <iostream>
