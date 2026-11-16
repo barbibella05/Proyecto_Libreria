@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Editorial.h"
 
 Editorial::Editorial(){
     _idEditorial = 0;
