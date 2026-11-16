@@ -1,0 +1,20 @@
+VENTAS  - archivos de esta carpeta
+Factura, FacturaArchivo, FacturaManager, DetalleVenta, DetalleVentaArchivo, DetalleVentaManager (.h y .cpp)
+
+Como sumarlos al proyecto
+- Dependen de Fecha.h y ClienteArchivo.h (Barbara), que ya estan en el repositorio
+
+Para Mai (menu principal)
+- Opcion Ventas: FacturaManager ventas; ventas.Menu();
+- Los .dat que se crean: factura.dat y detalle_venta.dat (junto al programa)
+
+Para Mai (Libro)
+- Falta validar que el libro exista, este activo y tenga stock, y descontarlo/devolverlo. Necesito en LibroArchivo: buscar(const char *isbn) y un metodo para modificar el stock
+
+Para Barbii
+- Falta validar el empleado de la venta (hoy solo se pide un numero mayor a 0)
+- Persona usa std::string y se graba con fwrite: al leer un cliente el programa se cierra
+- Agregar PersonaManager.cpp/.h al .cbp
+
+Para Tob
+- Respaldo/exportar: cada Archivo tiene exportarCSV(nombre); ver FacturaArchivo como modelo.
