@@ -7,7 +7,7 @@ Libro::Libro(){
     strcpy(_ISBN,"");
     strcpy(_titulo,"");
     _idAutor =0;
-    strcpy(_editorial,"");
+   // strcpy(_editorial,"");
     _idEditorial = 0;
     _fechaPublicacion = Fecha();
     _idGenero = 0;
@@ -30,9 +30,9 @@ void Libro::setIdAutor(int idAutor){
     _idAutor = idAutor;
 };
 
-void Libro::setEditorial(const char* editorial){
-    strcpy(_editorial, editorial);
-};
+//void Libro::setEditorial(const char* editorial){
+//    strcpy(_editorial, editorial);
+//};
 
 void Libro::setIdEditorial(int idEditorial){
     _idEditorial = idEditorial;

@@ -6,7 +6,7 @@ private:
     char  _ISBN[14];
     char  _titulo[80];
     int   _idAutor;
-    char  _editorial[50]; // lo cambiaria por idEditorial
+    //char  _editorial[50]; // lo cambiaria por idEditorial
     int   _idEditorial;
     Fecha _fechaPublicacion;
     int   _idGenero;
@@ -25,7 +25,7 @@ public:
     void setISBN(const char* ISBN);
     void setTitulo(const char* titulo);
     void setIdAutor(int idAutor);
-    void setEditorial(const char* editorial);
+    //void setEditorial(const char* editorial);
     void setIdEditorial(int idEditorial);
     void setFechaPublicacion(Fecha fechaPublicacion);
     void setIdGenero(int idGenero);
@@ -37,7 +37,7 @@ public:
     const char* getISBN();
     const char* getTitulo();
     int getIdAutor();
-    const char* getEditorial();
+    //const char* getEditorial();
     int getIdEditorial();
     Fecha getFechaPublicacion();
     int getIdGenero();
@@ -46,3 +46,4 @@ public:
     bool getEstado();
 
 };
+
