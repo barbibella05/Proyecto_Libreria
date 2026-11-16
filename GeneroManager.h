@@ -11,11 +11,16 @@ private:
 
     bool ExisteID(int idGenero);
 
+    void MostrarGenero(Genero genero);
+    void MostrarGeneroListado(Genero genero);
+    void MostrarEncabezado();
+    void MostrarEncabezadoInactivos();
+
 public:
     void Menu();
     void NuevoGenero();
     void ModificarGenero();
     void ListarTodos();
-    void BuscarXIDGenero();
+    void ListarXIDGenero();
     void Eliminar();
 };

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "Genero.h"
 
 class GeneroArchivo{
@@ -7,9 +8,9 @@ private:
 public:
     GeneroArchivo(std::string nombre = "genero.dat");
     bool agregarGenero(Genero reg);
-    bool agregarGenero(Genero reg, int pos);
+    bool agregarGenero(Genero reg, int pos);//sobrescribe
 
-    int buscar(int nroGenero);
+    int buscar(int idGenero);
 
     Genero leer(int pos);
     bool leer(int cantidadRegistros, Genero *vec);
@@ -17,5 +18,5 @@ public:
     bool guardar(Genero reg, int pos);
     bool eliminar(int pos);
 
-    int contarRegistros()
+    int contarRegistros();
 };

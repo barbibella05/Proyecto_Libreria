@@ -1,6 +1,7 @@
 #include <iostream>
 #include "ClienteManager.h"
 #include "EmpleadoManager.h"
+#include "GeneroManager.h"
 
 using namespace std;
 
@@ -8,6 +9,7 @@ int main()
 {
     ClienteManager clienteManager;
     EmpleadoManager empleadoManager;
+    GeneroManager generoManager;
 
     int opcion;
 
@@ -19,6 +21,7 @@ int main()
         cout << "============================" << endl;
         cout << "1. Gestionar clientes" << endl;
         cout << "2. Gestionar empleados" << endl;
+        cout << "3. Gestionar genero" << endl;
         cout << "0. Salir" << endl;
         cout << "============================" << endl;
         cout << "Seleccione una opcion: ";
@@ -33,6 +36,9 @@ int main()
 
         case 2:
             empleadoManager.Menu();
+            break;
+        case 3:
+            generoManager.Menu();
             break;
 
         case 0:
