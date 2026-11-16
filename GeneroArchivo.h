@@ -1,6 +1,21 @@
-#ifndef GENEROARCHIVO_H_INCLUDED
-#define GENEROARCHIVO_H_INCLUDED
+#pragma once
+#include "Genero.h"
 
+class GeneroArchivo{
+private:
+    std::string _nombre;
+public:
+    GeneroArchivo(std::string nombre = "genero.dat");
+    bool agregarGenero(Genero reg);
+    bool agregarGenero(Genero reg, int pos);
 
+    int buscar(int nroGenero);
 
-#endif // GENEROARCHIVO_H_INCLUDED
+    Genero leer(int pos);
+    bool leer(int cantidadRegistros, Genero *vec);
+
+    bool guardar(Genero reg, int pos);
+    bool eliminar(int pos);
+
+    int contarRegistros()
+};

@@ -7,7 +7,8 @@ using namespace std;
 ClienteArchivo::ClienteArchivo(string nombreArchivo){
     _nombre = nombreArchivo;
 }
-
+/**
+HACER DE GENEROOOOOOOOOOOOO
 bool ClienteArchivo::agregarCliente(Cliente reg){
     FILE *p;
 
@@ -108,6 +109,9 @@ bool ClienteArchivo::eliminar(int pos){
 }
 
 int ClienteArchivo::contarRegistros(){
+
+
+*/
     FILE *p;
     Cliente reg;
 

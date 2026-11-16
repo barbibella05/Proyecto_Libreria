@@ -1,6 +1,21 @@
-#ifndef GENEROMANAGER_H_INCLUDED
-#define GENEROMANAGER_H_INCLUDED
+#pragma once
+#include "Genero.h"
+#include "GeneroArchivo.h"
 
+class GeneroManager{
+private:
+    GeneroArchivo _archivo;
 
+    Genero CargarGenero();
+    int GenerarIDGenero();
 
-#endif // GENEROMANAGER_H_INCLUDED
+    bool ExisteID(int idGenero);
+
+public:
+    void Menu();
+    void NuevoGenero();
+    void ModificarGenero();
+    void ListarTodos();
+    void BuscarXIDGenero();
+    void Eliminar();
+};
