@@ -4,7 +4,7 @@
 
 ///---- MAI - BARBI ----
 using namespace std;
-
+/**
 MenuPrincipalManager::MenuPrincipalManager(){
     setCantidadOpciones(10);
 }
@@ -86,3 +86,4 @@ void MenuPrincipalManager::ejecutarOpcion(int opcion) {
                 break;
         }
     }
+*/

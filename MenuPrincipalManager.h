@@ -11,7 +11,7 @@
 #include "InformeManager.h"
 
 /// ---- MAI - BARBI ----
-
+/**
 class MenuPrincipalManager : public Menu
 {
 public:
@@ -35,3 +35,4 @@ private:
     //DetalleCompraStockMenu dcosm;
 
 };
+*/

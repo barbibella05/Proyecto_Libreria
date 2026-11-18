@@ -5,7 +5,7 @@
 #include "ClienteArchivo.h"
 #include "LibroArchivo.h"
 #include "DetalleVentaArchivo.h"
-
+/**
 class InformeManager {
 private:
     FacturaArchivo _archivoFacturas;
@@ -24,3 +24,4 @@ public:
     void RecaudacionPorCliente();
     void LibrosSinVentas();
 };
+*/

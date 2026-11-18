@@ -5,6 +5,7 @@
 #include "Fecha.h"
 using namespace std;
 
+/**
 Libro::Libro(){
     strcpy(_ISBN,"");
     strcpy(_titulo,"");
@@ -55,3 +56,4 @@ void Libro::setEstado(bool estado){
 }
 
 //GETTERS - MAI
+*/

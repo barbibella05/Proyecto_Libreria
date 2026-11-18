@@ -5,6 +5,7 @@
 // --- MAI - BARBI --
 using namespace std;
 
+/**
 Menu::Menu(){
 	setCantidadOpciones(0);
 }
@@ -54,3 +55,4 @@ void Menu::setCantidadOpciones(int cantidad){
 int Menu::getCantidadOpciones(){
 	return _cantidadOpciones;
 }
+*/

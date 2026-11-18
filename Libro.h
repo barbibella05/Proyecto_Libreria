@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-
+/**
 class Libro{
 private:
     char  _ISBN[14];
@@ -46,4 +46,5 @@ public:
     bool getEstado();
 
 };
+*/
 

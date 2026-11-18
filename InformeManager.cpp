@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include "InformeManager.h"
 using namespace std;
-
+/**
 void InformeManager::Menu() {
     int opcion;
 
@@ -127,132 +127,6 @@ void InformeManager::GeneroMasVendido(){
 
 void InformeManager::VentasPorEmpleado() {
 
-    EmpleadoArchivo arcEmpleado;
-    VentaArchivo arcVenta;
-    DetalleVentaArchivo arcDetalle;
+*/
 
-    int cantidadEmpleados = arcEmpleado.contarRegistros();
-    int cantidadVentasReg = arcVenta.contarRegistros();
-    int cantidadDetalles = arcDetalle.contarRegistros();
 
-    if (cantidadEmpleados == 0 || cantidadVentasReg == 0) {
-        cout << "No hay empleados o ventas registradas." << endl;
-        return;
-    }
-
-    // Crear los vectores dinamicos
-    int *idsEmpleados = new int[cantidadEmpleados];
-    int *cantidadVentas = new int[cantidadEmpleados]{0};
-    float *importesTotales = new float[cantidadEmpleados]{0};
-
-    // 1. Cargar los numeros de empleados
-    for (int i = 0; i < cantidadEmpleados; i++) {
-
-        Empleado empleado = arcEmpleado.leer(i);
-
-        idsEmpleados[i] = empleado.getNroEmpleado();
-    }
-
-    // 2. Recorrer todas las ventas
-    for (int i = 0; i < cantidadVentasReg; i++) {
-
-        Venta venta = arcVenta.leer(i);
-
-        // Excluir ventas canceladas
-        if (venta.getEstado()) {
-
-            int nroEmpleado = venta.getNroEmpleado();
-
-            // Buscar la posicion del empleado
-            for (int j = 0; j < cantidadEmpleados; j++) {
-
-                if (idsEmpleados[j] == nroEmpleado) {
-
-                    // Contar una venta para el empleado
-                    cantidadVentas[j]++;
-
-                    // 3. Recorrer los detalles de esa venta
-                    for (int k = 0; k < cantidadDetalles; k++) {
-
-                        DetalleVenta detalle = arcDetalle.leer(k);
-
-                        if (detalle.getVentaId() == venta.getVentaId()) {
-
-                            float importe = detalle.getCantidad()
-                                            * detalle.getPrecioUnitario();
-
-                            importesTotales[j] += importe;
-                        }
-                    }
-
-                    break;
-                }
-            }
-        }
-    }
-
-    // 4. Ordenar de mayor a menor cantidad de ventas
-    for (int i = 0; i < cantidadEmpleados - 1; i++) {
-
-        for (int j = i + 1; j < cantidadEmpleados; j++) {
-
-            if (cantidadVentas[i] < cantidadVentas[j]) {
-
-                int auxCantidad = cantidadVentas[i];
-                cantidadVentas[i] = cantidadVentas[j];
-                cantidadVentas[j] = auxCantidad;
-
-                int auxID = idsEmpleados[i];
-                idsEmpleados[i] = idsEmpleados[j];
-                idsEmpleados[j] = auxID;
-
-                float auxImporte = importesTotales[i];
-                importesTotales[i] = importesTotales[j];
-                importesTotales[j] = auxImporte;
-            }
-        }
-    }
-
-    // 5. Mostrar el Top 5
-    cout << "==========================================================" << endl;
-    cout << "              TOP 5 VENTAS POR EMPLEADO                  " << endl;
-    cout << "==========================================================" << endl;
-
-    cout << left
-         << setw(8) << "Puesto"
-         << setw(15) << "Nro.Empleado"
-         << setw(15) << "Ventas"
-         << setw(15) << "Importe total"
-         << endl;
-
-    cout << "----------------------------------------------------------" << endl;
-
-    int limite = cantidadEmpleados;
-
-    if (limite > 5) {
-        limite = 5;
-    }
-
-    for (int i = 0; i < limite; i++) {
-
-        int pos = arcEmpleado.buscar(idsEmpleados[i]);
-
-        if (pos >= 0) {
-
-            Empleado empleado = arcEmpleado.leer(pos);
-
-            cout << left
-                 << setw(8) << i + 1
-                 << setw(15) << empleado.getNroEmpleado()
-                 << setw(15) << cantidadVentas[i]
-                 << "$" << fixed << setprecision(2)
-                 << importesTotales[i]
-                 << endl;
-        }
-    }
-
-    // Liberar memoria
-    delete[] idsEmpleados;
-    delete[] cantidadVentas;
-    delete[] importesTotales;
-}

@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "Libro.h"
-
+/**
 class LibroArchivo{
 private:
     std::string _nombre;
@@ -20,3 +20,4 @@ public:
 
     int contarRegistros();
 };
+*/
