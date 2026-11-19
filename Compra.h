@@ -1,6 +1,9 @@
-#ifndef COMPRA_H_INCLUDED
-#define COMPRA_H_INCLUDED
+#pragma once
 
-
-
-#endif // COMPRA_H_INCLUDED
+/**
+-CompraId: int
+-ISBN: char[14]
+-CantComprar: int
++FechaCompra: Fecha
+-Estado: bool
+*/

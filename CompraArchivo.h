@@ -1,6 +1,1 @@
-#ifndef COMPRAARCHIVO_H_INCLUDED
-#define COMPRAARCHIVO_H_INCLUDED
-
-
-
-#endif // COMPRAARCHIVO_H_INCLUDED
+#pragma once
