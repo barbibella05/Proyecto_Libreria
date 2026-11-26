@@ -44,10 +44,14 @@
 		<Unit filename="ClienteArchivo.h" />
 		<Unit filename="ClienteManager.cpp" />
 		<Unit filename="ClienteManager.h" />
+		<Unit filename="Compra.cpp" />
 		<Unit filename="Compra.h" />
+		<Unit filename="CompraArchivo.cpp" />
 		<Unit filename="CompraArchivo.h" />
 		<Unit filename="CompraManager.h" />
+		<Unit filename="DetalleCompraStock.cpp" />
 		<Unit filename="DetalleCompraStock.h" />
+		<Unit filename="DetalleCompraStockArchivo.cpp" />
 		<Unit filename="DetalleCompraStockArchivo.h" />
 		<Unit filename="DetalleCompraStockManager.h" />
 		<Unit filename="DetalleVenta.cpp" />

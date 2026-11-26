@@ -285,3 +285,35 @@
 	<cstdlib>
 	"InformeManager.h"
 
+1795722636 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detallecomprastock.cpp
+	<iostream>
+	<cstring>
+	"DetalleCompraStock.h"
+
+1795722636 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detallecomprastock.h
+
+1795720285 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\compra.cpp
+	<iostream>
+	<cstring>
+	"Compra.h"
+	"Fecha.h"
+
+1795720273 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\compra.h
+	"Fecha.h"
+
+1795720473 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\compraarchivo.cpp
+	<iostream>
+	"CompraArchivo.h"
+
+1795720273 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\compraarchivo.h
+	<string>
+	"Compra.h"
+
+1795722636 source:c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detallecomprastockarchivo.cpp
+	<iostream>
+	"DetalleCompraStockArchivo.h"
+
+1795721920 c:\users\barbi\desktop\progra 2\tp_libreria\proyecto_libreria\proyecto_libreria\detallecomprastockarchivo.h
+	<string>
+	"DetalleCompraStock.h"
+

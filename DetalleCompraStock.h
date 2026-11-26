@@ -2,23 +2,27 @@
 
 class DetalleCompraStock{
 private:
-       int _idDetalle;
-       int _ventaId;
-       char _ISBN[14];
-       int _cantidad;
-       float _precioUnitario;
+    int _idDetalle;
+    int _compraId;
+    char _ISBN[14];
+    int _cantidad;
+    float _precioUnitario;
+    bool _estado;
+
 public:
     DetalleCompraStock();
 
     int getIdDetalle();
-    int getVentaId();
+    int getCompraId();
     const char* getISBN();
     int getCantidad();
     float getPrecioUnitario();
+    bool getEstado();
 
     void setIdDetalle(int idDetalle);
-    void setVentaId(int ventaId);
+    void setCompraId(int compraId);
     void setISBN(const char* ISBN);
     void setCantidad(int cantidad);
     void setPrecioUnitario(float precioUnitario);
+    void setEstado(bool estado);
 };

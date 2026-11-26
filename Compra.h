@@ -3,25 +3,19 @@
 
 class Compra{
 private:
-    int _idcompra;
-    char _ISBN[14];
-    int _cantComprar;
+    int _idCompra;
     Fecha _fechaCompra;
     bool _estado;
+
 public:
     Compra();
 
-    int getIdcompra();
-    const char* getISBN();
-    int getCantComprar();
-    Fecha getFechaCompra());
+    int getIdCompra();
+    Fecha getFechaCompra();
     bool getEstado();
 
-
-    void setIdcompra(int idcompra);
-    void setISBN(const char* ISBN);
-    void setCantComprar(int cantComprar);
+    void setIdCompra(int idCompra);
     void setFechaCompra(Fecha fechaCompra);
-    void setEstado(bool estado();
+    void setEstado(bool estado);
 };
 
